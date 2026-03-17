@@ -1,0 +1,10 @@
+{
+  "modelVersion": "1.0.0",
+  "name": "system",
+  "version": "1.1.1",
+  "source": "file:///c:/WS/ejerciciopractico/system/pom.xml",
+  "natures": [
+    "mule"
+  ],
+  "components": []
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>20a1f58d-0747-4ed0-a965-d048572aa2ac</groupId>
+  <artifactId>api-system</artifactId>
+  <version>1.0.0</version>
+  <name>api-system</name>
+  <properties>
+    <classifier>raml</classifier>
+    <main>api-system.raml</main>
+    <status>published</status>
+    <originalFormatVersion>1.0</originalFormatVersion>
+    <apiVersion>v1</apiVersion>
+    <projectId>9da1e231-ac91-4d1b-8e48-11b9f4c71122</projectId>
+    <branchId>master</branchId>
+    <commitId>36330c29ceab9b7d2a44b921b5066f8c86d539b4</commitId>
+    <keywords/>
+    <type>rest-api</type>
+    <mainFile>api-system.raml</mainFile>
+  </properties>
+  <repositories>
+    <repository>
+      <id>anypoint-exchange</id>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+    </repository>
+  </repositories>
+</project>

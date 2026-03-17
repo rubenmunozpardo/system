@@ -17,14 +17,16 @@ bin/**
 tmp/**
 tmp/**/*
 *.tmp
+temp/
 *.bak
 *.swp
 *~.nib
 local.properties
 .settings/
 .loadpath
-.project
-.classpath
+# Recommended for Maven based projects 
+#.project
+#.classpath
 
 # External tool builders
 .externalToolBuilders/
@@ -41,8 +43,9 @@ local.properties
 # --------------- #
 # Studio-specific #
 # --------------- #
+.studio/
+flows/
 target/
-.mule/
-.DS_Store
-velocity.log
-.tooling-project
+**/*.mflow
+/bin/
+temp/
