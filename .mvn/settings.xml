@@ -1,0 +1,9 @@
+<settings>
+  <servers>
+    <server>
+      <id>exchange-v3</id>
+      <username>~~~Client~~~</username>
+      <password>${env.CA_CLIENT_ID}~?~${env.CA_CLIENT_SECRET}</password>
+    </server>
+  </servers>
+</settings>
