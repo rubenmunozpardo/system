@@ -20,11 +20,11 @@
   <distributionManagement>
     <repository>
       <id>exchange-v3</id>
-      <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/maven</url>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/mave</url>
     </repository>
     <snapshotRepository>
       <id>exchange-v3</id>
-      <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/maven</url>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/mave</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -121,7 +121,7 @@
     <repository>
       <id>anypoint-exchange-v3</id>
       <name>Anypoint Exchange</name>
-      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/maven</url>
       <layout>default</layout>
     </repository>
     <repository>
