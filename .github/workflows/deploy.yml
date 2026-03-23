@@ -3,8 +3,8 @@ name: Deploy System API
 on:
   push:
     branches:
-      - dev
-      - pre
+      - DEV
+      - PRE
 
 jobs:
   build-and-deploy:
