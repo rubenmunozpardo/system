@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.mycompany</groupId>
+	<groupId>20a1f58d-0747-4ed0-a965-d048572aa2ac</groupId>
 	<artifactId>system</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
 	<name>system</name>
 
 	<properties>
@@ -17,6 +15,36 @@
 		<mule.maven.plugin.version>4.7.0</mule.maven.plugin.version>
 	</properties>
 
+	<distributionManagement>
+		<repository>
+			<id>exchange-v3</id>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/maven</url>
+		</repository>
+		<snapshotRepository>
+			<id>exchange-v3</id>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/20a1f58d-0747-4ed0-a965-d048572aa2ac/maven</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env>
+				<applicationName>system-dev</applicationName>
+				<environmentName>DEV</environmentName>
+			</properties>
+		</profile>
+		<profile>
+			<id>pre</id>
+			<properties>
+				<env>pre</env>
+				<applicationName>system-pre</applicationName>
+				<environmentName>PRE</environmentName>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -24,13 +52,30 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
 			</plugin>
+
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
+				<version>4.7.0</version>
 				<extensions>true</extensions>
 				<configuration>
-					<classifier>---- select project type ----</classifier>
+					<cloudhub2Deployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+
+						<applicationName>${applicationName}</applicationName>
+						<muleVersion>4.11.0</muleVersion>
+						<environment>${environmentName}</environment>
+
+						<businessGroupId>20a1f58d-0747-4ed0-a965-d048572aa2ac</businessGroupId>
+						<region>eu-west-1</region>
+
+						<connectedAppClientId>${env.CA_CLIENT_ID}</connectedAppClientId>
+						<connectedAppClientSecret>${env.CA_CLIENT_SECRET}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+
+						<replicas>1</replicas>
+						<vCores>0.1</vCores>
+					</cloudhub2Deployment>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -50,12 +95,6 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.mule.modules</groupId>
-			<artifactId>mule-apikit-module</artifactId>
-			<version>1.11.13</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
 			<groupId>20a1f58d-0747-4ed0-a965-d048572aa2ac</groupId>
 			<artifactId>api-system</artifactId>
 			<version>1.0.0</version>
@@ -66,6 +105,12 @@
 			<groupId>com.mulesoft.modules</groupId>
 			<artifactId>mule-secure-configuration-property-module</artifactId>
 			<version>1.3.0</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<version>1.11.14</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
@@ -96,5 +141,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
