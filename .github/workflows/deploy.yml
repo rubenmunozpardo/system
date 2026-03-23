@@ -18,11 +18,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java 11
+      - name: Set up Java 11 + Maven server for Exchange
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '11'
+          server-id: anypoint-exchange-v3
+          server-username: CA_CLIENT_ID
+          server-password: CA_CLIENT_SECRET
 
       - name: Determine environment based on branch
         id: envselect
@@ -37,15 +40,15 @@ jobs:
 
       - name: Build and Publish to Exchange
         run: |
-          mvn -s .mvn/settings.xml \
-              -P${{ steps.envselect.outputs.PROFILE }} \
-              -Denv=${{ steps.envselect.outputs.ENV }} \
-              clean deploy
+          mvn \
+            -P${{ steps.envselect.outputs.PROFILE }} \
+            -Denv=${{ steps.envselect.outputs.ENV }} \
+            clean deploy -X
 
       - name: Deploy to CloudHub 2.0
         run: |
-          mvn -s .mvn/settings.xml \
-              -P${{ steps.envselect.outputs.PROFILE }} \
-              -Denv=${{ steps.envselect.outputs.ENV }} \
-              -DmuleDeploy \
-              package
+          mvn \
+            -P${{ steps.envselect.outputs.PROFILE }} \
+            -Denv=${{ steps.envselect.outputs.ENV }} \
+            -DmuleDeploy \
+            package -X
