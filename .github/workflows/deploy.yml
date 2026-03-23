@@ -2,7 +2,9 @@ name: Deploy System API
 
 on:
   push:
-    branches: [ DEV, PRE ]
+    branches:
+      - dev
+      - pre
 
 jobs:
   build-and-deploy:
@@ -21,10 +23,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '11'
-          # Estos 3 parámetros generan /home/runner/.m2/settings.xml con el <server> correcto:
-          server-id: anypoint-exchange-v3
-          server-username: CA_CLIENT_ID
-          server-password: CA_CLIENT_SECRET
 
       - name: Determine environment based on branch
         id: envselect
@@ -39,15 +37,15 @@ jobs:
 
       - name: Build and Publish to Exchange
         run: |
-          mvn \
-            -P${{ steps.envselect.outputs.PROFILE }} \
-            -Denv=${{ steps.envselect.outputs.ENV }} \
-            clean deploy -X
+          mvn -s .mvn/settings.xml \
+              -P${{ steps.envselect.outputs.PROFILE }} \
+              -Denv=${{ steps.envselect.outputs.ENV }} \
+              clean deploy
 
       - name: Deploy to CloudHub 2.0
         run: |
-          mvn \
-            -P${{ steps.envselect.outputs.PROFILE }} \
-            -Denv=${{ steps.envselect.outputs.ENV }} \
-            -DmuleDeploy \
-            package -X
+          mvn -s .mvn/settings.xml \
+              -P${{ steps.envselect.outputs.PROFILE }} \
+              -Denv=${{ steps.envselect.outputs.ENV }} \
+              -DmuleDeploy \
+              package
