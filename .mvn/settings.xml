@@ -10,17 +10,17 @@
     <server>
       <id>exchange-v1</id>
       <username>~~~Client~~~</username>
-      <password>${env.CA_CLIENT_SECRET}</password>
+      <password>${secrets.CA_CLIENT_ID}~?~${secrets.CA_CLIENT_SECRET}</password>
     </server>
 	    <server>
       <id>exchange-v2</id>
       <username>~~~Client~~~</username>
-      <password>${env.CA_CLIENT_SECRET}</password>
+      <password>${secrets.CA_CLIENT_ID}~?~${secrets.CA_CLIENT_SECRET}</password>
     </server>
 	    <server>
       <id>exchange-v3</id>
       <username>~~~Client~~~</username>
-      <password>${env.CA_CLIENT_SECRET}</password>
+      <password>${secrets.CA_CLIENT_ID}~?~${secrets.CA_CLIENT_SECRET}</password>
     </server>
 
   </servers>
